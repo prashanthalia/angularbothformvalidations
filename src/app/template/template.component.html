@@ -1,0 +1,56 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3>Angular 7 Template-Driven Form Validation</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required pattern='^[a-zA-Z]*$'/>
+                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                            <div *ngIf="firstName.errors.pattern">First Name is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required  pattern ='^[a-zA-Z]*$'/>
+                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">Last Name is required</div>
+                            <div *ngIf="lastName.errors.pattern">Last Name is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                
+                      <div class="form-group">
+                        <label for="PhoneNUmber">phone number</label>
+                        <input type="text" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required pattern="[7-9][0-9]{9}" />
+                        <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                            <div *ngIf="phone.errors.required">Confirm phone number is required</div>
+                            <div *ngIf="phone.errors.pattern">phone number invalid</div>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="Date"> Date</label>
+                        <input type="date" class="form-control" name="Datepic" [(ngModel)]="model.Datepic" #Datepic="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Datepic.invalid }" required  max="{{datepicker}}"/>
+                        <div *ngIf="f.submitted && Datepic.invalid" class="invalid-feedback">
+                            <div *ngIf="Datepic.errors.required">Date is required</div>
+                          
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

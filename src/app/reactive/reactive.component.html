@@ -1,0 +1,56 @@
+<div class="container">
+
+    <form [formGroup]="rform" (ngSubmit)="onsubmit(this.rform.value)">
+
+        <div class="form-group">
+            firstname:
+            <input type="text" formControlName="fname" class="form-control"
+                [ngClass]="{'is-invalid':submitted && f.fname.errors}">
+            <div *ngIf="submitted && f.fname.errors " class="invalid-feedback">
+                <div *ngIf="f.fname.errors.required">name is required</div>
+                <div *ngIf="f.fname.errors.pattern">name is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            lastname:<input type="text" formControlName="lname" class="form-control"
+                [ngClass]="{'is-invalid':submitted && f.lname.errors} ">
+            <div *ngIf="submitted && f.lname.errors " class="invalid-feedback">
+                <div *ngIf="f.lname.errors.required">name is required</div>
+                <div *ngIf="f.fname.errors.pattern">
+                    name is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            email:<input type="email" class="form-control" formControlName="email"
+                [ngClass]="{'is-invalid':submitted && f.email.errors}">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">emails is required</div>
+                <div *ngIf="f.email.errors.pattern">emails is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input class="form-control" maxlength="10" formControlName="phone"
+                [ngClass]="{'is-invalid':submitted && f.phone.errors}">
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">phone number is required</div>
+                <div *ngIf="f.phone.errors.pattern">phone must be a valid numbers</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            date:<input type="date" formControlName="dat" [ngClass]="{'is-invalid':submitted && f.dat.errors}" class ="form-control"
+                max="{{dateInPastdays}}">
+            <div *ngIf="submitted && f.dat.errors" class="invalid-feedback">
+                <div *ngIf="f.dat.errors.required">date required</div>
+            </div>
+        </div>
+
+        <button>submit</button>
+
+    </form>
+
+</div>
